@@ -19,6 +19,16 @@ $topnav-background-color: #222;
 .btn:focus{
     outline: 3px auto #FFF;
 }
+.center-vert{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.center-hor{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .topnav{
   border-radius: 0;
   background-color: $topnav-background-color;
@@ -163,7 +173,6 @@ a:hover{
 }
 .main-container{
   margin: 50px 0 0 0;
-    padding: 20px;
     -ms-overflow-x: hidden;
         overflow-x: hidden;
     position: relative;
@@ -520,8 +529,9 @@ a:hover{
   animation: load2 2s infinite ease;
 }
 .center {
-  text-align: center;
-}
+  float: none;
+  display: inline-block; }
+
 @-webkit-keyframes load2 {
   0% {
     -webkit-transform: rotate(0deg);

@@ -3,8 +3,9 @@ import { enableProdMode, provide } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { ROUTER_PROVIDERS } from '@angular/router';
 import { AppComponent } from './base';
-import {UserService} from "../../services/user.service";
 import {DataService} from "../../services/data.service";
+import {BaseService} from "../../services/base.service";
+import {HTTP_PROVIDERS} from "@angular/http";
 
 if ('<%= ENV %>' === 'prod') { enableProdMode(); }
 
@@ -13,7 +14,7 @@ if ('<%= ENV %>' === 'prod') { enableProdMode(); }
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 bootstrap(AppComponent, [
-  ROUTER_PROVIDERS, UserService, DataService,
+  ROUTER_PROVIDERS, HTTP_PROVIDERS, BaseService, DataService,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' })
 ]);
 

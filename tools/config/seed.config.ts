@@ -122,7 +122,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'ProtoBids';
+  APP_TITLE = 'Cer.li';
 
   /**
    * The base folder of the applications source files.

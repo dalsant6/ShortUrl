@@ -1,7 +1,0 @@
-<h1>Jobs</h1>
-<ul class="nav nav-tabs">
-  <li (click)="changeStatus('active')" [ngClass]="{active: active=='active'}"><a>Active</a></li>
-  <li (click)="changeStatus('progress')" [ngClass]="{active: active=='progress'}"><a>In Progress</a></li>
-  <li (click)="changeStatus('complete')" [ngClass]="{active: active=='complete'}"><a>Completed</a></li>
-</ul>
-<client-jobs [status]="active"></client-jobs>

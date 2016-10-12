@@ -1,0 +1,96 @@
+.center{
+  text-align: center;
+  display: block;
+}
+.title{
+  font-weight: bold;
+}
+.slide-title{
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#cerled{
+  text-align: center;
+}
+.slide-title > h1{
+  color: #2e2e2e;
+  font-weight: bolder;
+}
+.header{
+  width: 100%;
+  height: 30rem;
+  padding-top: 2rem;
+  position: relative;
+}
+.shorten{
+  background: url("https://pixabay.com/static/uploads/photo/2016/08/05/10/39/banner-1571995_960_720.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.layer{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(248, 247, 216, 0.7);
+}
+.analyze{
+  background-color: #ffffff;
+}
+.results{
+  height: 0;
+  -webkit-animation: 1s linear scale;
+  -o-animation: 1s linear scale;
+  animation: 1s linear scale;
+  animation-fill-mode: forwards;
+  background-color: #f5f5f5;
+}
+.corner-margin{
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.corner-margin > h2{
+  font-size: 5rem;
+}
+.info{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%,-50%);
+
+}
+.results-container{
+  opacity: 0;
+  -webkit-animation: 1s 1s linear introduce;
+  -o-animation: 1s 1s linear introduce;
+  animation: 1s 1s linear introduce;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+}
+.input-group-btn > .btn{
+  padding-bottom: 0.1rem;
+}
+@keyframes scale {
+  from{
+    height: 0;
+  }
+  to{
+    height: 30rem;
+  }
+}
+@keyframes introduce {
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

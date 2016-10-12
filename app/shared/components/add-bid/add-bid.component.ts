@@ -1,12 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {ControlGroup, FormBuilder} from '@angular/common';
 import {CardComponent} from "../layout/card/card";
-import {SelectButton, SelectItem} from 'primeng/primeng';
-import {Job} from "../../models/job";
-import {UserService} from "../../../services/user.service";
 import {DataService} from "../../../services/data.service";
 import {ColComponent} from "../layout/col/col";
-import {Bid} from "../../models/bid";
 
 @Component({
   moduleId: module.id,
@@ -17,9 +13,9 @@ import {Bid} from "../../models/bid";
 })
 
 export class AddBidComponent{
-  @Input('job') job: Job;
+  @Input('job') job: any;
   bidForm: ControlGroup;
-  constructor(private _fb: FormBuilder, private _userService: UserService, private _dataService: DataService){
+  constructor(private _fb: FormBuilder, private _dataService: DataService){
     this.bidForm = _fb.group({
       parts: [''],
       shipping: [''],
@@ -30,6 +26,7 @@ export class AddBidComponent{
       comments: ['']
     });
   }
+  /*
   submitBid(data: any){
     let newBid = new Bid(data);
     newBid.dateSubmitted = new Date().getTime();
@@ -42,5 +39,5 @@ export class AddBidComponent{
         console.log("no error, added bid!");
       }
     });
-  }
+  }*/
 }

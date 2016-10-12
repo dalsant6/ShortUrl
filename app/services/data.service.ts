@@ -1,97 +1,33 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "./base.service";
 import {Observable} from 'rxjs';
-import {Job} from "../shared/models/job";
-import {Bid} from "../shared/models/bid";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class DataService extends BaseService{
 
-  constructor(){
-    super();
+  constructor(http: Http){
+    super(http);
   }
-  addJob(job: Job, status: string): Observable<any>{
-    this.setJobId(job);
+  submitUrl(url: string): Observable<any>{
     return Observable.create((observable: any) => {
-      this.insert("/jobs/"+status+"/"+job.id, job).subscribe((error: any) => {
-        if(error){
-          observable.next(error);
-        }else{
-          observable.next(null);
-        }
+      this.post("/submitUrl/", url).subscribe((data) => {
+        observable.next(data);
       });
     });
   }
-  addBid(jobId: string, bid: Bid): Observable<any>{
+  getLongUrl(short: string): Observable<any>{
     return Observable.create((observable: any) => {
-      this.push("/jobs/active/"+jobId+'/bids', bid).subscribe((error: any) => {
-        if(error){
-          observable.next(error);
-        }else{
-          observable.next(null);
-        }
+      this.get("/getLong/"+short).subscribe((data) => {
+        observable.next(data);
       });
     });
   }
-  getJob(jobId: string): Observable<any>{
-    console.log('jobId = '+jobId);
-    return Observable.create((observer: any) => {
-      this.select('/jobs/active', 'id', jobId).subscribe((data: any) => {
-        if(data){
-          observer.next(data);
-        }else{
-          this.select('/jobs/progress', 'id', jobId).subscribe((data: any) => {
-            if(data){
-              observer.next(data);
-            }else{
-              this.select('/jobs/complete', 'id', jobId).subscribe((data: any) => {
-                if(data){
-                  observer.next(data);
-                }else{
-                  observer.next(null);
-                }
-              });
-            }
-          });
-        }
+  addRedirect(index: string): Observable<any>{
+    return Observable.create((observable: any) => {
+      this.get("/add-redirect/"+index).subscribe((data) => {
+        observable.next(data);
       });
     });
-  }
-  getActiveClientJobs(clientId: string): Observable<any>{
-    return Observable.create((observer: any) => {
-      this.select('/jobs/active', 'clientId', clientId).subscribe((data: any) => {
-        if(data){
-          observer.next(data);
-        }else{
-          observer.next(null);
-        }
-      });
-    });
-  }
-  getProgressClientJobs(clientId: string): Observable<any>{
-    return Observable.create((observer: any) => {
-      this.select('/jobs/progress', 'clientId', clientId).subscribe((data: any) => {
-        if(data){
-          observer.next(data);
-        }else{
-          observer.next(null);
-        }
-      });
-    });
-  }
-  getCompleteClientJobs(clientId: string): Observable<any>{
-    return Observable.create((observer: any) => {
-      this.select('/jobs/complete', 'clientId', clientId).subscribe((data: any) => {
-        if(data){
-          observer.next(data);
-        }else{
-          observer.next(null);
-        }
-      });
-    });
-  }
-  setJobId(job: Job){
-    let time: number = job.startTimeMillis;
-    job.id = time.toString();
   }
 }

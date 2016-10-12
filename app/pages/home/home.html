@@ -1,0 +1,87 @@
+<page-content>
+  <div class="header shorten" id="shorten">
+    <div class="layer">
+      <row>
+        <div class="slide-title">
+          <h1>Keep It Short</h1>
+        </div>
+      </row>
+      <row class="center-vert">
+        <a-col [cols]="6" [offset]="3">
+          <form role="form" [ngFormModel]="urlForm">
+            <div class="form-content">
+              <div class="input-group">
+                <input type="text" id="url" class="form-control" placeholder="http://..."
+                       [ngFormControl]="urlForm.find('url')">
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary"
+                                                      (click)="submitUrl(urlForm.find('url').value)">Shorten</button></span>
+              </div>
+            </div>
+          </form>
+        </a-col>
+      </row>
+    </div>
+  </div>
+  <div class="header results" *ngIf="url && url?.shortUrl?.length > 0">
+    <div class="results-container">
+      <row>
+        <div class="slide-title">
+          <h1>Cerl'd Link</h1><input id="cerled" type="text" contenteditable="false" value="{{url.shortUrl}}">
+        </div>
+      </row>
+      <row class="info">
+        <a-col [cols]="6" [offset]="3">
+          <row>
+            <a-col [cols]="6">
+              <row>
+                <div class="center title">
+                  Old URL Length
+                </div>
+              </row>
+              <row>
+                <div class="center">
+                  {{urlForm.find('url').value?.length}}
+                </div>
+              </row>
+            </a-col>
+            <a-col [cols]="6">
+              <row>
+                <div class="center title">
+                  New URL Length
+                </div>
+              </row>
+              <row>
+                <div class="center">
+                  {{url.shortUrl?.length}}
+                </div>
+              </row>
+            </a-col>
+            <a-col [cols]="8" [offset]="2">
+              <div class="center">
+                That's a {{percentDecrease}}% decrease in size!
+              </div>
+            </a-col>
+          </row>
+        </a-col>
+      </row>
+    </div>
+  </div>
+  <div class="header analyze" id="analyze">
+    <div class="slide-title">
+      <h1>Analyze The Stats</h1>
+    </div><row class="center-vert">
+    <a-col [cols]="6" [offset]="3">
+      <form role="form" [ngFormModel]="analyzeForm">
+        <div class="form-content">
+          <div class="input-group">
+            <input type="text" id="analyzeUrl" class="form-control" placeholder="cer.li/..."
+                   [ngFormControl]="analyzeForm.find('analyzeUrl')">
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary"
+                                                      (click)="analyzeUrl(analyzeForm.find('analyzeUrl').value)">Analyze</button></span>
+          </div>
+        </div>
+      </form>
+    </a-col>
+  </row>
+  </div>
+</page-content>
