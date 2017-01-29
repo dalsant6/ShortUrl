@@ -171,12 +171,35 @@ a:hover{
 .bg-white {
     background: #fff;
 }
+.overlay{
+  background:rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  z-index: 0;
+
+  display: block;
+}
 .main-container{
-  margin: 50px 0 0 0;
-    -ms-overflow-x: hidden;
-        overflow-x: hidden;
-    position: relative;
-    z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  display: block;
+}
+.background-image{
+  height: 100vh;
+  background: url('../img/forging-background.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
 }
 .chat-panel{
     .chat-dropdown{

@@ -122,7 +122,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Cer.li';
+  APP_TITLE = 'Anvil';
 
   /**
    * The base folder of the applications source files.
