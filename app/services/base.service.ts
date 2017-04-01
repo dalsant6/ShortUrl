@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs/Rx";
 import {Http, Headers} from "@angular/http";
 
 @Injectable()
 export class BaseService {
   headers: Headers = new Headers();
-  baseUrl = 'http://localhost:8080/example_war_exploded/rest';
+  baseUrl = 'http://sample-env-1.stmppjgwis.us-west-2.elasticbeanstalk.com/rest';
   constructor(private http: Http){
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Accept', 'application/json');

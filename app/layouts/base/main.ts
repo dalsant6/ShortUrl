@@ -6,6 +6,8 @@ import { AppComponent } from './base';
 import {DataService} from "../../services/data.service";
 import {BaseService} from "../../services/base.service";
 import {HTTP_PROVIDERS} from "@angular/http";
+import {Angulartics2GoogleAnalytics} from "angulartics2/src/providers/angulartics2-google-analytics";
+import {Angulartics2} from "angulartics2/index";
 
 if ('<%= ENV %>' === 'prod') { enableProdMode(); }
 
@@ -14,7 +16,7 @@ if ('<%= ENV %>' === 'prod') { enableProdMode(); }
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 bootstrap(AppComponent, [
-  ROUTER_PROVIDERS, HTTP_PROVIDERS, BaseService, DataService,
+  ROUTER_PROVIDERS, HTTP_PROVIDERS, Angulartics2, BaseService, DataService,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' })
 ]);
 

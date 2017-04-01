@@ -1,26 +1,37 @@
-<page-content>
-    <div class="register-card">
-      <div class="center-parent">
-        <img alt="Anvil" class="center center-img" src="../../assets/img/anvil_full_white.png">
-        <h2 class="center space_1 one-line">The platform for creation.<br>Be one of the first to engage in the client-contractor revolution.</h2>
-        <div class="card opaque-card">
-          <h3 class="center space_1">Sign Up For Your Early Access Invite</h3>
-          <div class="split-buttons space_1">
-            <button class="btn opaque select-button" [ngClass]="{selected : type == 'Client'}" (click)="type = 'Client'">I'm A Client</button><button class="btn opaque select-button" [ngClass]="{selected : type == 'Contractor'}" (click)="type = 'Contractor'">I'm A Contractor</button>
-          </div>
-          <form class="space_1" role="form" [ngFormModel]="emailForm">
-            <div class="form-content">
-              <div class="form-group">
-                  <div class="form-container"><!--
+<div class="register-card">
+  <div class="center-parent">
+    <img alt="Anvil - contractors from product design to mass production" class="center center-img" src="../../assets/img/anvil_full_white.png">
+    <h2 class="center space_1 one-line">The platform for creation.<br>Be one of the first to engage in the
+      client-contractor revolution.</h2>
+    <div class="card opaque-card">
+      <h3 class="center space_1">Sign Up For Your Early Access Invite</h3>
+      <div class="split-buttons space_1">
+        <button class="btn opaque select-button" [ngClass]="{selected : type == 'Client'}" (click)="type = 'Client'">I'm A Client</button><!--
+        --><button class="btn opaque select-button" [ngClass]="{selected : type == 'Contractor'}" (click)="type = 'Contractor'">I'm A Contractor</button>
+      </div>
+      <form class="space_1" role="form" [ngFormModel]="emailForm">
+        <div class="form-content">
+          <div class="form-group">
+            <div class="spacer-bottom form-container">
+              <input pInputText type="company" ng-model="company" class="form-control input-underline input-lg form-input-full" id="company" placeholder="Company Name" [ngFormControl]="emailForm.find('company')">
+         </div>
+            <div class="form-container"><!--
                       --><input pInputText type="email" ng-model="email" class="form-control input-underline input-lg form-input" id="email" placeholder="email@domain.com" [ngFormControl]="emailForm.find('email')"><!--
                       --><button class="btn opaque-action form-action" (click)="register(emailForm.value)">Notify Me</button><!--
                   --></div>
-              </div>
-            </div>
-          </form>
-          <h4 class="center">Your email will never be shared or sold!</h4>
-          <h2 *ngIf="registeredEA && registeredEA.email != ''" class="registered center">Thank you for registering for early access! We'll notify you at {{registeredEA.email}} when Anvil is ready.</h2>
+          </div>
         </div>
-      </div>
+      </form>
+      <h4 class="center">Your email will never be shared or sold!</h4>
+      <h2 *ngIf="showEmailReq" class="registered center">An email address is required to register.</h2>
+      <h2 *ngIf="showCompanyReq" class="registered center">A valid company name is required to register.</h2>
+      <h2 *ngIf="showBadFormat" class="registered center">This email is not of valid format (eg. name@domain.com).</h2>
+      <h2 *ngIf="registerError != ''" class="registered center">{{registerError}}</h2>
+      <h2 *ngIf="registeredEA && registeredEA.email != ''" class="registered center">Thank you for registering for early
+        access! We'll notify you at {{registeredEA.email}} when Anvil is ready.</h2>
     </div>
-</page-content>
+    <a href="http://www.twitter.com/the_anvl"><img alt="Twitter @the_anvl - Get updates on Anvil news" class="center center-img" width="30rem" src="../../assets/img/twitter_anvil.png"></a>
+  </div>
+  <div class="pixel1" [innerHtml]="twitterPixel1"></div>
+  <div class="pixel2" [innerHtml]="twitterPixel2"></div>
+</div>
